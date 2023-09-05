@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+
+    cosmos-server:
+        image: 'azukaar/cosmos-server:latest'  
+        container_name: cosmos-server             
+        ports:
+            - '80:80'
+            - '443:443'
+        privileged: true
+        hostname: cosmos-server
+        restart: unless-stopped
+        volumes:
+            - '/var/run/docker.sock:/var/run/docker.sock'
+            - '/:/mnt/host'
+            - '/var/lib/cosmos:/config'
